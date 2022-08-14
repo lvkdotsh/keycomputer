@@ -1,8 +1,9 @@
-import { FC } from "react";
-import { Link } from "react-router-dom";
-import { KeyPreviewCard } from "../components/KeyPreviewCard";
-import { useFamilies } from "../lib/useFamily";
-import { useKeys } from "../lib/useKeys";
+import { FC } from 'react';
+import { Link } from 'react-router-dom';
+
+import { KeyPreviewCard } from '../components/KeyPreviewCard';
+import { useFamilies } from '../lib/useFamily';
+import { useKeys } from '../lib/useKeys';
 
 const AllFamilies: FC = () => {
     const { data, error } = useFamilies();
@@ -14,11 +15,16 @@ const AllFamilies: FC = () => {
             <h1 className="text-4xl pt-4 pl-4 pb-8">
                 Collections ({data.length})
             </h1>
-            <ul className="grid px-4 gap-4 grid-cols-2 m:grid-cols-3 lg:grid-cols-4">
+            <ul className="grid px-4 gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
                 {data &&
                     data.map((key, index) => (
                         <li key={index}>
-                            <Link to={`/family/${key.slug}`} className="text-purple-500 hover:underline">{key.name}</Link>
+                            <Link
+                                to={`/family/${key.slug}`}
+                                className="text-purple-500 hover:underline"
+                            >
+                                {key.name}
+                            </Link>
                         </li>
                     ))}
             </ul>
@@ -27,7 +33,7 @@ const AllFamilies: FC = () => {
 };
 
 const AllKeys: FC = () => {
-    const { data, error } = useKeys("*");
+    const { data, error } = useKeys('*');
 
     if (!data) return <></>;
 
@@ -36,7 +42,7 @@ const AllKeys: FC = () => {
             <h1 className="text-4xl pt-4 pl-4 pb-8">
                 All Keys ({data.length})
             </h1>
-            <div className="grid px-4 gap-4 grid-cols-2 m:grid-cols-3 lg:grid-cols-4">
+            <div className="grid px-4 gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
                 {data &&
                     data.map((key, index) => (
                         <KeyPreviewCard data={key} key={index} />
