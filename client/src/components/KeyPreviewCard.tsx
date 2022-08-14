@@ -11,7 +11,7 @@ export const KeyPreviewCard: FC<{ data: KeyType }> = ({ data }) => {
                 style={{ aspectRatio: "3 / 4" }}
             >
                 <img
-                    src={`/preview/raw/${data.slug}.jpg`}
+                    src={`/preview/${data.slug}.webp`}
                     className="w-full h-full object-cover rounded-md"
                     style={{ aspectRatio: "3 / 4" }}
                     alt={data.slug}

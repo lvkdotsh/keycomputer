@@ -4,9 +4,9 @@ import { KeyType } from "../../../server/src/types/KeyType";
 import { useKey } from "../lib/useKey";
 
 const VARIATIONS = [
-    `/preview/raw/$ID.jpg`,
-    `/set/front/raw/$ID.jpg`,
-    `/set/coin/raw/$ID.jpg`,
+    `/preview/$ID.webp`,
+    `/set/front/$ID.webp`,
+    `/set/coin/$ID.webp`,
 ];
 
 const ImageData: FC<{ data: KeyType }> = ({ data }) => {
@@ -48,7 +48,7 @@ const KeyDataPage: FC<{ data: KeyType }> = ({ data }) => {
         <div className="w-full px-4 pt-4">
             <div className="w-full flex gap-4">
                 <div className="">
-                    <ImageData data={data} />
+                <ImageData data={data} />
                 </div>
                 <div className="pt-4">
                     <h1 className="text-2xl font-bold">{data.name}</h1>
