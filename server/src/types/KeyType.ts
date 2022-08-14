@@ -12,5 +12,5 @@ export type KeyType = {
     // "tubular-7", ID relating to FamilyType;
     family?: string;
     //
-    img?: string;
+    imgs?: string[];
 };

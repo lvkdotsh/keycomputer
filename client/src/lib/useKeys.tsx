@@ -28,7 +28,6 @@ export const ALL_KEYS: KeyType[] = [
         name: "EX 511",
         slug: "ex511",
         family: "tubular-7",
-        img: "/ex511.png",
     },
     { name: "KONE 5", slug: "kone5", family: "tubular-7" },
     { name: "KONE 4", slug: "kone4", family: "tubular-7" },
@@ -36,9 +35,9 @@ export const ALL_KEYS: KeyType[] = [
     { name: "KONE 2", slug: "kone2", family: "tubular-7" },
     { name: "KONE 1", slug: "kone1", family: "tubular-7" },
     { name: "2642", slug: "2642" },
-    { name: "1620", slug: "1620", img: "/1620.png" },
-    { name: "Tractor (1147)", slug: "1147", img: "/1147.png" },
-    { name: "Golfcart Key (CC1)", slug: "cc1", img: "/cc1.png" },
+    { name: "1620", slug: "1620" },
+    { name: "Tractor (1147)", slug: "1147" },
+    { name: "Golfcart Key (CC1)", slug: "cc1" },
     { name: "Handcuff Key", slug: "handcuff" },
 ];
 
