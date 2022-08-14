@@ -7,6 +7,8 @@ export type KeyType = {
     description?: string;
     // 
     pinning?: string;
+    // 
+    warnings?: [string];
     // "tubular-7", ID relating to FamilyType;
     family?: string;
 };
