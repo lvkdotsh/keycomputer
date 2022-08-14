@@ -1,50 +1,51 @@
-import { FC, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { KeyType } from "../../../server/src/types/KeyType";
-import { useFamily } from "../lib/useFamily";
-import { useKey } from "../lib/useKey";
+import { FC, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+
+import { KeyType } from '../../../server/src/types/KeyType';
+import { useFamily } from '../lib/useFamily';
+import { useKey } from '../lib/useKey';
 
 const VARIATIONS = [
-    [`/set/front/$ID.webp`, "Front"],
-    [`/set/back/$ID.webp`, "Back"],
-    [`/set/coin/$ID.webp`, "Coin"],
+    ['/set/front/$ID.webp', 'Front'],
+    ['/set/back/$ID.webp', 'Back'],
+    ['/set/coin/$ID.webp', 'Coin'],
 ];
 
 const ImageData: FC<{ data: KeyType }> = ({ data }) => {
     const [activeVariation, setActiveVariation] = useState(0);
 
     return (
-        <div className="w-64 max-w-full">
+        <div className="w-full sm:w-64 max-w-full flex sm:flex-col justify-center">
             <div
-                className="w-64 max-w-full bg-neutral-800 border-2 border-neutral-700"
-                style={{ aspectRatio: "3/4" }}
+                className="w-64 max-w-full h-fit bg-neutral-800 border-2 border-neutral-700"
+                style={{ aspectRatio: '3/4' }}
             >
                 <img
-                    src={VARIATIONS[activeVariation][0].replace(
-                        "$ID",
-                        data.slug,
-                    )}
+                    src={VARIATIONS[activeVariation]
+                        .at(0)
+                        .replace('$ID', data.slug)}
                     alt=""
                 />
             </div>
-            <div className="w-full max-w-full pt-4 flex justify-around gap-2 px-4">
+            <div className="h-full sm:h-auto sm:w-full max-w-full sm:pt-4 pl-2 flex flex-col sm:flex-row sm:flex-row justify-around gap-2 sm:px-4">
                 {VARIATIONS.map((variation, index) => (
                     <button
                         key={index}
-                        className={"flex-1"}
+                        className={'h-fit w-20 sm:w-auto'}
                         onClick={() => {
                             setActiveVariation(index);
                         }}
                     >
                         <img
-                            src={variation[0].replace("$ID", data.slug)}
+                            src={variation.at(0).replace('$ID', data.slug)}
                             className={
                                 activeVariation == index
-                                    ? "outline-yellow-500 outline"
-                                    : ""
+                                    ? 'outline-yellow-500 outline'
+                                    : ''
                             }
+                            alt={variation.at(1)}
                         />
-                        <div>{variation[1]}</div>
+                        <div className="hidden sm:block">{variation.at(1)}</div>
                     </button>
                 ))}
             </div>
@@ -55,7 +56,12 @@ const ImageData: FC<{ data: KeyType }> = ({ data }) => {
 const FamilyLink: FC<{ family_id: string }> = ({ family_id }) => {
     const { data, error } = useFamily(family_id);
 
-    if (data) return <Link to={`/family/${data.slug}`} className="hover:underline">{data.name}</Link>;
+    if (data)
+        return (
+            <Link to={`/family/${data.slug}`} className="hover:underline">
+                {data.name}
+            </Link>
+        );
 
     if (error) return <>Unknown</>;
 
@@ -65,8 +71,8 @@ const FamilyLink: FC<{ family_id: string }> = ({ family_id }) => {
 const KeyDataPage: FC<{ data: KeyType }> = ({ data }) => {
     return (
         <div className="w-full px-4 pt-4">
-            <div className="w-full flex gap-4">
-                <div className="">
+            <div className="w-full flex flex-col sm:flex-row gap-4">
+                <div className="flex justify-center">
                     <ImageData data={data} />
                 </div>
                 <div className="pt-4">
@@ -76,13 +82,13 @@ const KeyDataPage: FC<{ data: KeyType }> = ({ data }) => {
                     </h2>
                     <div className="mt-4">
                         <div>
-                            Obtained from{" "}
+                            Obtained from{' '}
                             <span className="text-purple-300">
-                                {data.obtained_from || "Unknown"}
+                                {data.obtained_from || 'Unknown'}
                             </span>
                         </div>
                         <div>
-                            Member of{" "}
+                            Member of{' '}
                             <span className="text-purple-300">
                                 <FamilyLink family_id={data.family} />
                             </span>
