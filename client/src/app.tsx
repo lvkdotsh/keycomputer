@@ -8,7 +8,7 @@ import { KeyPage } from "./pages/KeyPage";
 
 export const App: FC = () => {
     return (
-        <div className="w-full min-h-screen bg-neutral-900">
+        <div className="w-full min-h-screen bg-neutral-900 text-white">
             <div className="mx-auto w-full max-w-4xl">
                 <Header />
                 <Routes>
