@@ -15,7 +15,7 @@ export const Header: FC = () => {
             <a
                 href="https://twitter.com/lucemansnl"
                 target="_blank"
-                className="border-yellow-500 bg-neutral-800 md:px-4 md:py-1 rounded-full md:rounded-none hover:brightness-90 flex border-2 items-center justify-center w-fit h-fit"
+                className="border-yellow-500 bg-neutral-800 md:px-4 md:py-1 rounded-full md:rounded-none hover:brightness-90 flex border-2 items-center justify-center w-fit h-fit gap-2"
             >
                 <span className="hidden md:block">A Lucemans Site</span>
                 <img
