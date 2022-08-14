@@ -31,20 +31,25 @@ const ImageData: FC<{ data: KeyType }> = ({ data }) => {
                 {VARIATIONS.map((variation, index) => (
                     <button
                         key={index}
-                        className={'h-fit w-20 sm:w-auto'}
+                        className={'h-fit w-20 sm:w-full'}
                         onClick={() => {
                             setActiveVariation(index);
                         }}
                     >
-                        <img
-                            src={variation.at(0).replace('$ID', data.slug)}
-                            className={
-                                activeVariation == index
-                                    ? 'outline-yellow-500 outline'
-                                    : ''
-                            }
-                            alt={variation.at(1)}
-                        />
+                        <div
+                            className="w-full bg-neutral-700"
+                            style={{ aspectRatio: '3 / 4' }}
+                        >
+                            <img
+                                src={variation.at(0).replace('$ID', data.slug)}
+                                className={
+                                    activeVariation == index
+                                        ? 'outline-yellow-500 outline'
+                                        : ''
+                                }
+                                alt={variation.at(1)}
+                            />
+                        </div>
                         <div className="hidden sm:block">{variation.at(1)}</div>
                     </button>
                 ))}
