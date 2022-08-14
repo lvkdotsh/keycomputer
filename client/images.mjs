@@ -1,23 +1,28 @@
 #!/usr/bin/env zx
 
 async function resize(folder_name, output_folder, quality, sizeX, sizeY) {
+    const files = await glob(`dataset/${folder_name}/**.(jpg|png)`);
 
-  const files = await glob(`dataset/${folder_name}/**.jpg`);
+    await $`rm -rf ${output_folder}`;
 
-  await $`rm -rf ${output_folder}`;
+    await $`mkdir -p ${output_folder}`;
 
-  await $`mkdir -p ${output_folder}`;
-
-  for (const image of files) {
-    await $`cwebp -resize ${sizeX} ${sizeY} -q ${quality} -o ${output_folder}/${image.split('/').at(-1).replace('.jpg', '.webp')} ${image}`;
-  }
-
+    for (const image of files) {
+        await $`cwebp -resize ${sizeX} ${sizeY} -q ${quality} -o ${output_folder}/${image
+            .split('/')
+            .at(-1)
+            .replace('.jpg', '.webp')
+            .replace('.png', '.webp')} ${image}`;
+    }
 }
 
 await resize('front', 'public/set/preview', 50, 300, 400);
 await resize('front', 'public/set/front', 100, 960, 1280);
 await resize('back', 'public/set/back', 100, 960, 1280);
 await resize('coin', 'public/set/coin', 100, 960, 1280);
+
+await resize('family', 'public/set/family', 50, 96, 64); // from 600 x 400
+await resize('vendor', 'public/set/vendor', 50, 96, 64);
 
 // await $`cat package.json | grep name`
 
