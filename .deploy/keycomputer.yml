@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keycomputer
+  namespace: keycomputer
+  labels:
+    name: keycomputer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: keycomputer
+  template:
+    metadata:
+      labels:
+        run: keycomputer
+    spec:
+      containers:
+        - name: keycomputer
+          image: "lvkdotsh/keycomputer:edge"
+          imagePullPolicy: "Always"
+          ports:
+            - containerPort: 3000
+              name: "swarm"
+              protocol: "TCP"
+          env:
+            - name: REDIS_URI
+              value: redis://redis.keycomputer.svc.cluster.local:6379
+            - name: ENVIRONMENT
+              value: production
+          resources: {}
+      nodeName: v3x-poseidon
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: keycomputer
+  namespace: keycomputer
+spec:
+  selector:
+    run: keycomputer
+  ports:
+  - port: 3000
+    targetPort: 3000
