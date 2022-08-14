@@ -20,14 +20,19 @@ export const App: FC = () => {
                     <a
                         href="https://twitter.com/lucemansnl"
                         target="_blank"
-                        className="gap-2 border-yellow-500 bg-neutral-800 md:px-4 md:py-1 rounded-full md:rounded-none hover:brightness-90 flex border-2 items-center justify-center w-fit h-fit"
+                        className="flex items-center gap-2"
                     >
-                        <span className="hidden md:block">A Lucemans Site</span>
-                        <img
-                            className="w-8 rounded-full"
-                            src="https://header.luc.computer/public/500x500.webp"
-                            alt=""
-                        />
+                        <div className="gap-2 border-yellow-500 bg-neutral-800 md:px-4 md:py-1 rounded-full md:rounded-none hover:brightness-90 flex border-2 items-center justify-center w-fit h-fit">
+                            <span className="hidden md:block">
+                                A Lucemans Site
+                            </span>
+                            <img
+                                className="w-8 rounded-full"
+                                src="https://header.luc.computer/public/500x500.webp"
+                                alt=""
+                            />
+                        </div>
+                        <div className="block md:hidden">Lucemans</div>
                     </a>
                 </div>
             </div>

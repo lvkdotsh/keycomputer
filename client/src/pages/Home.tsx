@@ -12,9 +12,9 @@ const AllFamilies: FC = () => {
 
     return (
         <div className="mt-4">
-            <h1 className="text-4xl pt-4 pl-4 pb-8">
+            <h2 className="text-3xl pt-4 pl-4 pb-8">
                 Collections ({data.length})
-            </h1>
+            </h2>
             <ul className="grid px-4 gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
                 {data &&
                     data.map((key, index) => (
@@ -39,9 +39,9 @@ const AllKeys: FC = () => {
 
     return (
         <div className="mt-4">
-            <h1 className="text-4xl pt-4 pl-4 pb-8">
+            <h2 className="text-3xl pt-4 pl-4 pb-8">
                 All Keys ({data.length})
-            </h1>
+            </h2>
             <div className="grid px-4 gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
                 {data &&
                     data.map((key, index) => (
@@ -55,6 +55,16 @@ const AllKeys: FC = () => {
 export const Home: FC = () => {
     return (
         <div className="mt-4">
+            <div className="px-4">
+                <h1 className="text-4xl">Key Computer</h1>
+                <p className="mt-4 text-lg">
+                    A database of common keys to common things. This list
+                    contains basic information per key, categories, as well as
+                    most common places the lock-key combination is deployed.
+                    Hopefully this database helps you out with your next "art
+                    project" 😉 <span className="text-yellow-500">~ Luc</span>
+                </p>
+            </div>
             <AllFamilies />
             <AllKeys />
         </div>
