@@ -19,9 +19,6 @@ export const KeyPreviewCard: FC<{ data: KeyType }> = ({ data }) => {
             </Link>
             <div className="flex flex-col items-center px-2 py-2 mt-2">
                 <div className="font-bold">{data.name}</div>
-                {data.slug != data.name.toLowerCase().replace(" ", "") && (
-                    <div>{data.slug}</div>
-                )}
             </div>
         </div>
     );
