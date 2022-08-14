@@ -87,12 +87,6 @@ const KeyDataPage: FC<{ data: KeyType }> = ({ data }) => {
                     </h2>
                     <div className="mt-4 w-full">
                         <h2 className="">{data.description}</h2>
-                        <div>
-                            Obtained from{' '}
-                            <span className="text-purple-300">
-                                {data.obtained_from || 'Unknown'}
-                            </span>
-                        </div>
                         <div className="flex flex-col gap-4">
                             <div className="h-16 bg-neutral-700 relative w-full overflow-hidden px-4 py-2">
                                 <div
@@ -107,8 +101,9 @@ const KeyDataPage: FC<{ data: KeyType }> = ({ data }) => {
                                 <div>{data.obtained_from}</div>
                             </div>
                             {data.family.map((family, index) => (
-                                <div
-                                    className="h-16 bg-neutral-700 relative w-full overflow-hidden px-4 py-2"
+                                <Link
+                                    to={`/family/${family}`}
+                                    className="h-16 bg-neutral-700 hover:brightness-90 relative w-full overflow-hidden px-4 py-2"
                                     key={index}
                                 >
                                     <div
@@ -121,7 +116,7 @@ const KeyDataPage: FC<{ data: KeyType }> = ({ data }) => {
                                     />
                                     <div className="font-bold">Family</div>
                                     <div>{family}</div>
-                                </div>
+                                </Link>
                             ))}
                         </div>
                     </div>
