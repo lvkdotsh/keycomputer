@@ -13,4 +13,6 @@ export type KeyType = {
     family?: string;
     //
     imgs?: string[];
+    // Vendor, ex "DEFCON"
+    obtained_from?: string;
 };

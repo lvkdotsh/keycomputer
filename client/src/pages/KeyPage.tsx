@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { KeyType } from "../../../server/src/types/KeyType";
+import { useFamily } from "../lib/useFamily";
 import { useKey } from "../lib/useKey";
 
 const VARIATIONS = [
@@ -51,6 +52,16 @@ const ImageData: FC<{ data: KeyType }> = ({ data }) => {
     );
 };
 
+const FamilyLink: FC<{ family_id: string }> = ({ family_id }) => {
+    const { data, error } = useFamily(family_id);
+
+    if (data) return <Link to={`/family/${data.slug}`} className="hover:underline">{data.name}</Link>;
+
+    if (error) return <>Unknown</>;
+
+    return <>Resolving...</>;
+};
+
 const KeyDataPage: FC<{ data: KeyType }> = ({ data }) => {
     return (
         <div className="w-full px-4 pt-4">
@@ -60,8 +71,24 @@ const KeyDataPage: FC<{ data: KeyType }> = ({ data }) => {
                 </div>
                 <div className="pt-4">
                     <h1 className="text-2xl font-bold">{data.name}</h1>
-                    <h2 className="text-2xl">{data.slug}</h2>
-                    <h2 className="">{data.description}</h2>
+                    <h2 className="text-base px-2 py-1 bg-neutral-700 w-fit">
+                        {data.slug}
+                    </h2>
+                    <div className="mt-4">
+                        <div>
+                            Obtained from{" "}
+                            <span className="text-purple-300">
+                                {data.obtained_from || "Unknown"}
+                            </span>
+                        </div>
+                        <div>
+                            Member of{" "}
+                            <span className="text-purple-300">
+                                <FamilyLink family_id={data.family} />
+                            </span>
+                        </div>
+                        <h2 className="">{data.description}</h2>
+                    </div>
                 </div>
             </div>
         </div>

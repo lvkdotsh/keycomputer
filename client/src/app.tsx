@@ -1,10 +1,10 @@
-import { FC } from "react";
-import { Route, Routes } from "react-router-dom";
-import { KeyPreviewCard } from "./components/KeyPreviewCard";
-import { Header } from "./components/Header";
-import { useKeys } from "./lib/useKeys";
-import { Home } from "./pages/Home";
-import { KeyPage } from "./pages/KeyPage";
+import { FC } from 'react';
+import { Route, Routes } from 'react-router-dom';
+
+import { Header } from './components/Header';
+import { FamilyPage } from './pages/FamilyPage';
+import { Home } from './pages/Home';
+import { KeyPage } from './pages/KeyPage';
 
 export const App: FC = () => {
     return (
@@ -14,6 +14,7 @@ export const App: FC = () => {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/key/:key_id" element={<KeyPage />} />
+                    <Route path="/family/:key_id" element={<FamilyPage />} />
                 </Routes>
             </div>
         </div>
