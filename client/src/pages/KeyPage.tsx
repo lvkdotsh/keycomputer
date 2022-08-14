@@ -4,9 +4,9 @@ import { KeyType } from "../../../server/src/types/KeyType";
 import { useKey } from "../lib/useKey";
 
 const VARIATIONS = [
-    `/set/front/$ID.webp`,
-    `/set/back/$ID.webp`,
-    `/set/coin/$ID.webp`,
+    [`/set/front/$ID.webp`, "Front"],
+    [`/set/back/$ID.webp`, "Back"],
+    [`/set/coin/$ID.webp`, "Coin"],
 ];
 
 const ImageData: FC<{ data: KeyType }> = ({ data }) => {
@@ -19,7 +19,10 @@ const ImageData: FC<{ data: KeyType }> = ({ data }) => {
                 style={{ aspectRatio: "3/4" }}
             >
                 <img
-                    src={VARIATIONS[activeVariation].replace("$ID", data.slug)}
+                    src={VARIATIONS[activeVariation][0].replace(
+                        "$ID",
+                        data.slug,
+                    )}
                     alt=""
                 />
             </div>
@@ -27,15 +30,20 @@ const ImageData: FC<{ data: KeyType }> = ({ data }) => {
                 {VARIATIONS.map((variation, index) => (
                     <button
                         key={index}
-                        className={
-                            "flex-1 border-yellow-500" +
-                            (activeVariation == index ? " border-4" : "")
-                        }
+                        className={"flex-1"}
                         onClick={() => {
                             setActiveVariation(index);
                         }}
                     >
-                        <img src={variation.replace("$ID", data.slug)} />
+                        <img
+                            src={variation[0].replace("$ID", data.slug)}
+                            className={
+                                activeVariation == index
+                                    ? "outline-yellow-500 outline"
+                                    : ""
+                            }
+                        />
+                        <div>{variation[1]}</div>
                     </button>
                 ))}
             </div>
@@ -48,7 +56,7 @@ const KeyDataPage: FC<{ data: KeyType }> = ({ data }) => {
         <div className="w-full px-4 pt-4">
             <div className="w-full flex gap-4">
                 <div className="">
-                <ImageData data={data} />
+                    <ImageData data={data} />
                 </div>
                 <div className="pt-4">
                     <h1 className="text-2xl font-bold">{data.name}</h1>
