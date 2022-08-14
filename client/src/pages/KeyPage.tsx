@@ -4,8 +4,8 @@ import { KeyType } from "../../../server/src/types/KeyType";
 import { useKey } from "../lib/useKey";
 
 const VARIATIONS = [
-    `/preview/$ID.webp`,
     `/set/front/$ID.webp`,
+    `/set/back/$ID.webp`,
     `/set/coin/$ID.webp`,
 ];
 
