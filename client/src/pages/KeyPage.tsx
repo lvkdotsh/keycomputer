@@ -93,12 +93,6 @@ const KeyDataPage: FC<{ data: KeyType }> = ({ data }) => {
                                 {data.obtained_from || 'Unknown'}
                             </span>
                         </div>
-                        <div>
-                            Member of{' '}
-                            <span className="text-purple-300">
-                                <FamilyLink family_id={data.family} />
-                            </span>
-                        </div>
                         <div className="flex flex-col gap-4">
                             <div className="h-16 bg-neutral-700 relative w-full overflow-hidden px-4 py-2">
                                 <div
@@ -112,18 +106,23 @@ const KeyDataPage: FC<{ data: KeyType }> = ({ data }) => {
                                 <div className="font-bold">Vendor</div>
                                 <div>{data.obtained_from}</div>
                             </div>
-                            <div className="h-16 bg-neutral-700 relative w-full overflow-hidden px-4 py-2">
+                            {data.family.map((family, index) => (
                                 <div
-                                    className="absolute right-0 top-0 h-full"
-                                    style={{
-                                        background: `linear-gradient(to left, transparent, rgb(64, 64, 64)), url("/set/family/${data.family.toLowerCase()}.webp")`,
-                                        backgroundSize: 'cover',
-                                        aspectRatio: '6 / 4',
-                                    }}
-                                />
-                                <div className="font-bold">Vendor</div>
-                                <div>{data.family}</div>
-                            </div>
+                                    className="h-16 bg-neutral-700 relative w-full overflow-hidden px-4 py-2"
+                                    key={index}
+                                >
+                                    <div
+                                        className="absolute right-0 top-0 h-full"
+                                        style={{
+                                            background: `linear-gradient(to left, transparent, rgb(64, 64, 64)), url("/set/family/${family.toLowerCase()}.webp")`,
+                                            backgroundSize: 'cover',
+                                            aspectRatio: '6 / 4',
+                                        }}
+                                    />
+                                    <div className="font-bold">Family</div>
+                                    <div>{family}</div>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>

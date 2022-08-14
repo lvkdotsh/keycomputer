@@ -11,6 +11,11 @@ export const ALL_FAMILY: FamilyType[] = [
     {
         name: 'Tubular 7-Pin',
         slug: 'tubular-7',
+        affiliated: ['elevator'],
+    },
+    {
+        name: 'Elevator',
+        slug: 'elevator',
         affiliated: [],
     },
     {

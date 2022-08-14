@@ -10,7 +10,7 @@ export type KeyType = {
     // 
     warnings?: [string];
     // "tubular-7", ID relating to FamilyType;
-    family?: string;
+    family?: string[];
     //
     imgs?: string[];
     // Vendor, ex "DEFCON"
