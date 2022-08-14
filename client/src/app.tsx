@@ -16,6 +16,20 @@ export const App: FC = () => {
                     <Route path="/key/:key_id" element={<KeyPage />} />
                     <Route path="/family/:key_id" element={<FamilyPage />} />
                 </Routes>
+                <div className="py-8 w-full flex justify-around">
+                    <a
+                        href="https://twitter.com/lucemansnl"
+                        target="_blank"
+                        className="border-yellow-500 bg-neutral-800 md:px-4 md:py-1 rounded-full md:rounded-none hover:brightness-90 flex border-2 items-center justify-center w-fit h-fit"
+                    >
+                        <span className="hidden md:block">A Lucemans Site</span>
+                        <img
+                            className="w-8 rounded-full"
+                            src="https://header.luc.computer/public/500x500.webp"
+                            alt=""
+                        />
+                    </a>
+                </div>
             </div>
         </div>
     );
