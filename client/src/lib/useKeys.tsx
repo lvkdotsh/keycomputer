@@ -50,12 +50,6 @@ export const ALL_KEYS: KeyType[] = [
         obtained_from: DEFCON,
     },
     {
-        name: 'C420A',
-        slug: 'c420a',
-        family: ['cabinet'],
-        obtained_from: DEFCON,
-    },
-    {
         name: 'X4002',
         slug: 'x4002',
         family: ['tubular-7', 'elevator'],
@@ -145,8 +139,18 @@ export const ALL_KEYS: KeyType[] = [
         family: ['tubular-7', 'elevator'],
         obtained_from: DEFCON,
     },
-    { name: '2642', slug: '2642', obtained_from: DEFCON, family: ['newyork'] },
-    { name: '1620', slug: '1620', obtained_from: DEFCON, family: ['newyork'] },
+    {
+        name: 'NY Elevator Key (2642)',
+        slug: '2642',
+        obtained_from: DEFCON,
+        family: ['newyork'],
+    },
+    {
+        name: 'NY Elevator Key (1620)',
+        slug: '1620',
+        obtained_from: DEFCON,
+        family: ['newyork'],
+    },
     {
         name: 'Tractor (1147)',
         slug: '1147',
